@@ -1,6 +1,6 @@
 #Nama: Gerard Gregory
 #NIM: 12220095
-#Deskripsi: UAS Pemrograman Komputer
+#Deskripsi: UAS Pemrograman Komputer 2021
 
 import streamlit as st
 import pandas as pd
@@ -17,14 +17,13 @@ selectorNegara=data['name'].drop_duplicates()
 selectorTahun=data['tahun'].drop_duplicates()
 selectorBesar=[*range(1, 250, 1)]
 
-#Judul
+#judul
 st.title('Data Produksi Minyak Dunia')
-st.markdown('oleh Gerard Gregory 12220095')
-
+st.markdown('UAS IF2112 Pemrograman Komputer')
+st.markdown(' Gerard Gregory 12220095')
 '''
 ________________________________________________________________________
 '''
-
 #No.1: Produksi Minyak Tiap Negara Per Tahun
 st.markdown('Produksi Minyak Tiap Negara per Tahun')
 selectNegara=st.selectbox('Pilih Negara: ',selectorNegara)
@@ -36,11 +35,9 @@ dataA_graph=px.line(
   title=str("Produksi Minyak Negara "+selectNegara)
 )
 st.plotly_chart(dataA_graph)
-
 '''
 ________________________________________________________________________
 '''
-
 #No.2: Produksi Minyak n-besar pada Tahun x
 st.markdown('Produksi Minyak n-besar Negara per Tahun')
 selectTahun=st.selectbox('Pilih Tahun: ', selectorTahun)
@@ -55,11 +52,9 @@ dataB_graph=px.bar(
   title=str(str(selectBanyakNegara)+" Negara Terbesar Produksi Minyak pada Tahun "+str(selectTahun))
 )
 st.plotly_chart(dataB_graph)
-
 '''
 ________________________________________________________________________
 '''
-
 #No. 3: Produksi Minyak n-besar Kumulatif
 st.markdown('Produksi Minyak n-besar Negara Kumulatif')
 selectBanyakNegara2=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar)
@@ -73,20 +68,16 @@ dataC_graph=px.bar(
   title=str(str(selectBanyakNegara2)+" Negara Terbesar Produksi Minyak Kumulatif")
 )
 st.plotly_chart(dataC_graph)
-
 '''
 ________________________________________________________________________
 '''
-
-##Informasi 
-
+#No. 4: Informasi per Tahun
 st.markdown('Informasi Berdasarkan Tahun')
 selectTahun2 = st.selectbox('Pilih Tahun: ', selectorTahun, key="electTahun2")
-
 '''
 ________________________________________________________________________
 '''
-
+#No.4a: Negara Produksi Terbesar di Tahun X
 st.markdown('Negara dengan jumlah produksi terbesar')
 dataD=data[data['tahun']==selectTahun2]
 dataD=dataD.sort_values(["produksi"],ascending=[0])
@@ -96,7 +87,7 @@ dataD[["name","kode_negara","region","sub-region","produksi"]]
 '''
 ________________________________________________________________________
 '''
-
+#No.4b: Negara Produksi Terkecil di Tahun X
 st.markdown('Negara dengan jumlah produksi terkecil')
 dataE=data[data['tahun']==selectTahun2]
 dataE=dataE.sort_values(["produksi"],ascending=[1])
@@ -107,23 +98,19 @@ dataE[["name","kode_negara","region","sub-region","produksi"]]
 '''
 ________________________________________________________________________
 '''
-
+#No.4c: Negara Produksi Nol di Tahun X
 st.markdown('Negara dengan jumlah produksi nol')
 dataF=data[data['tahun']==selectTahun2]
 dataF=dataF.sort_values(["name"],ascending=[1])
 dataF= dataF.loc[dataF["produksi"]==0]
 dataF[["name","kode_negara","region","sub-region"]]
-
 '''
 ________________________________________________________________________
 '''
-
 st.markdown('Informasi Kumulatif')
-
 '''
-
 '''
-
+#No.4d: Negara Produksi Terbesar Kumulatif
 st.markdown('Negara dengan jumlah produksi terbesar kumulatif')
 dataG=data.groupby(["name"])["produksi"].sum().reset_index()
 dataG=dataG.sort_values(["produksi"],ascending=[0])
@@ -132,21 +119,19 @@ dataTemp.drop("produksi", axis=1, inplace=True)
 dataG=pd.merge(dataG,dataTemp,on='name')
 dataG=dataG.drop_duplicates("name")
 dataG[:1][["name","kode_negara","region","sub-region","produksi"]]
-
 '''
 ________________________________________________________________________
 '''
-
+#No.4e: Negara Produksi Terkecil Kumulatif
 st.markdown('Negara dengan jumlah produksi terkecil kumulatif')
 dataH=dataG.sort_values(["produksi"],ascending=[1])
 dataH=dataH.loc[dataH["produksi"]>0]
 dataH=dataH[:1]
 dataH[["name","kode_negara","region","sub-region","produksi"]]
-
 '''
 ________________________________________________________________________
 '''
-
+#No.4f: Negara Produksi Nol Kumulatif
 st.markdown('Negara dengan jumlah produksi nol kumulatif')
 dataI=dataG.sort_values(["name"],ascending=[1])
 dataI=dataI.loc[dataI["produksi"]==0]
