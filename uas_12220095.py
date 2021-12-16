@@ -30,7 +30,7 @@ ________________________________________________________________________
 st.markdown('Produksi Minyak Tiap Negara Per Tahun')
 selectNegara = st.selectbox('Pilih Negara',selectorNegara)
 dataA = data[data['name'] == selectNegara]
-dataA_graph=px.line(
+dataA_graph=px.bar(
   dataA,
   x="Tahun Produksi",
   y="Jumlah Produksi",
