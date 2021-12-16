@@ -45,7 +45,7 @@ ________________________________________________________________________
 ##Produksi Minyak Mentah Terbesar pada Tahun x
 st.markdown('Produksi Minyak Terbesar pada Tahun: ')
 selectTahun = st.selectbox('Pilih Tahun', selectorTahun)
-selectBanyakNegara = st.select_slider('Pilih Banyak Negara yang Ingin Ditampilkan: ', options=selectorBesar, value=10)
+selectBanyakNegara = st.number_input('Pilih Banyak Negara yang Ingin Ditampilkan: ', options=selectorBesar, value=10)
 dataB = data[data['tahun'] == selectTahun]
 dataB=dataB.sort_values(["produksi"],ascending=[0])
 dataB=dataB[:selectBanyakNegara]
@@ -53,7 +53,7 @@ dataB_graph=px.bar(
   dataB,
   x="name",
   y="produksi",
-  title=str(str(selectBanyakNegara)+" Negara Terbesar Produksi Minyak pada Tahun  "+str(selectTahun))
+  title=str(str(selectBanyakNegara)+" Negara Terbesar Produksi Minyak pada Tahun "+str(selectTahun))
 )
 st.plotly_chart(dataB_graph)
 
