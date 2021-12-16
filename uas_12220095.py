@@ -16,7 +16,7 @@ data=pd.merge(dataNegara,data,on='kode_negara')
 #membuat selektor display
 selectorNegara = data['name'].drop_duplicates()
 selectorTahun = data['tahun'].drop_duplicates()
-selectorBesar = [3,4,5,10,20,50,100]
+selectorBesar = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,1620,50,100]
 
 #Judul
 st.title('Data Produksi Minyak Dunia')
@@ -30,7 +30,7 @@ ________________________________________________________________________
 st.markdown('Produksi Minyak Tiap Negara Per Tahun')
 selectNegara = st.selectbox('Pilih Negara',selectorNegara)
 dataA = data[data['name'] == selectNegara]
-dataA_graph=px.bar(
+dataA_graph=px.line(
   dataA,
   x="tahun",
   y="produksi",
