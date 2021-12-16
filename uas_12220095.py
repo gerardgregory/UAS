@@ -2,8 +2,8 @@
 #NIM: 12220095
 #Deskripsi: UAS Pemrograman Komputer 2021
 
-import streamlit as st
 import pandas as pd
+import streamlit as st
 import plotly.express as px
 
 #merge data
