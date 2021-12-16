@@ -81,7 +81,7 @@ ________________________________________________________________________
 ##Informasi 
 
 st.markdown('Informasi Berdasarkan Tahun')
-selectTahun2 = st.selectbox('Pilih Tahun: ', selectorTahun)
+selectTahun2 = st.selectbox('Pilih Tahun: ', selectorTahun, key="electTahun2")
 
 '''
 ________________________________________________________________________
