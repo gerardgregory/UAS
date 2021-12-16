@@ -3,9 +3,10 @@
 #Deskripsi: UAS Pemrograman Komputer
 
 #import modul yang dibutuhkan
+import plotly.express as px
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+
 
 #merge data produksi minyak mentah dengan data detail negara
 data = pd.read_csv ("produksi_minyak_mentah.csv")
