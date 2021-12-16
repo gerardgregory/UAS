@@ -45,7 +45,7 @@ ________________________________________________________________________
 ##Produksi Minyak Mentah Terbesar pada Tahun x
 st.markdown('Produksi Minyak Terbesar pada Tahun: ')
 selectTahun = st.selectbox('Pilih Tahun', selectorTahun)
-selectBanyakNegara = st.slider('Pilih Banyak Negara yang Ingin Ditampilkan: ', selectorBesar)
+selectBanyakNegara = st.selectbox('Pilih Banyak Negara yang Ingin Ditampilkan: ', selectorBesar)
 dataB = data[data['tahun'] == selectTahun]
 dataB=dataB.sort_values(["produksi"],ascending=[0])
 dataB=dataB[:selectBanyakNegara]
