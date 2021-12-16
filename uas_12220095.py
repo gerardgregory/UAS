@@ -2,18 +2,17 @@
 #NIM: 12220095
 #Deskripsi: UAS Pemrograman Komputer
 
-#import modul yang dibutuhkan
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-#merge data produksi minyak mentah dengan data detail negara
+#merge data
 data=pd.read_csv ("produksi_minyak_mentah.csv")
 dataNegara=pd.read_json ('kode_negara_lengkap.json')
 dataNegara=dataNegara.rename(columns={"alpha-3":"kode_negara"})
 data=pd.merge(dataNegara,data,on='kode_negara')
 
-#membuat selektor display
+#selektor display
 selectorNegara=data['name'].drop_duplicates()
 selectorTahun=data['tahun'].drop_duplicates()
 selectorBesar=[*range(1, 250, 1)]
@@ -26,8 +25,8 @@ st.markdown('oleh Gerard Gregory 12220095')
 ________________________________________________________________________
 '''
 
-##Produksi Minyak Mentah Tiap Negara Per Tahun
-st.markdown('Produksi Minyak Tiap Negara Per Tahun')
+#No.1: Produksi Minyak Tiap Negara Per Tahun
+st.markdown('Produksi Minyak Tiap Negara per Tahun')
 selectNegara=st.selectbox('Pilih Negara: ',selectorNegara)
 dataA=data[data['name'] == selectNegara]
 dataA_graph=px.line(
@@ -42,8 +41,8 @@ st.plotly_chart(dataA_graph)
 ________________________________________________________________________
 '''
 
-##Produksi Minyak Mentah Terbesar pada Tahun x
-st.markdown('Produksi Minyak Terbesar pada Tahun: ')
+#No.2: Produksi Minyak n-besar pada Tahun x
+st.markdown('Produksi Minyak n-besar per Tahun')
 selectTahun=st.selectbox('Pilih Tahun: ', selectorTahun)
 selectBanyakNegara=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar, value=10)
 dataB=data[data['tahun']==selectTahun]
@@ -61,8 +60,8 @@ st.plotly_chart(dataB_graph)
 ________________________________________________________________________
 '''
 
-##Produksi Minyak Mentah Kumulatif Terbesar
-st.markdown('Produksi Minyak Kumulatif Terbesar')
+#No. 3: Produksi Minyak n-besar Kumulatif
+st.markdown('Produksi Minyak n-besar Kumulatif')
 selectBanyakNegara2=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar)
 dataC=data.groupby(["name"])["produksi"].sum().reset_index()
 dataC=dataC.sort_values(["produksi"],ascending=[0])
@@ -71,7 +70,7 @@ dataC_graph=px.bar(
   dataC,
   x="name",
   y="produksi",
-  title=str(str(selectBanyakNegara2)+" Negara Terbesar Produksi Minyak Mentah Kumulatif")
+  title=str(str(selectBanyakNegara2)+" Negara Terbesar Produksi Minyak Kumulatif")
 )
 st.plotly_chart(dataC_graph)
 
@@ -82,7 +81,7 @@ ________________________________________________________________________
 ##Informasi 
 
 st.markdown('Informasi Berdasarkan Tahun')
-selectTahun2=st.selectbox('Pilih Tahun ', selectorTahun)
+selectTahun2=st.selectbox('Pilih Tahun: ', selectorTahun)
 
 '''
 ________________________________________________________________________
