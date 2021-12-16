@@ -42,7 +42,7 @@ ________________________________________________________________________
 '''
 
 #No.2: Produksi Minyak n-besar pada Tahun x
-st.markdown('Produksi Minyak n-besar per Tahun')
+st.markdown('Produksi Minyak n-besar Negara per Tahun')
 selectTahun=st.selectbox('Pilih Tahun: ', selectorTahun)
 selectBanyakNegara=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar, value=10)
 dataB=data[data['tahun']==selectTahun]
@@ -61,7 +61,7 @@ ________________________________________________________________________
 '''
 
 #No. 3: Produksi Minyak n-besar Kumulatif
-st.markdown('Produksi Minyak n-besar Kumulatif')
+st.markdown('Produksi Minyak n-besar NegaraKumulatif')
 selectBanyakNegara2=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar)
 dataC=data.groupby(["name"])["produksi"].sum().reset_index()
 dataC=dataC.sort_values(["produksi"],ascending=[0])
