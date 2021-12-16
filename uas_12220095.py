@@ -7,8 +7,8 @@ import streamlit as st
 import plotly.express as px
 
 #merge data
-data=pd.read_csv ("produksi_minyak_mentah.csv")
-datanegara=pd.read_json ('kode_negara_lengkap.json')
+data=pd.read_csv("produksi_minyak_mentah.csv")
+datanegara=pd.read_json('kode_negara_lengkap.json')
 datanegara=datanegara.rename(columns={"alpha-3":"kode_negara"})
 data=pd.merge(datanegara,data,on='kode_negara')
 
@@ -36,7 +36,7 @@ ________________________________________________________________________
 #No.2: Produksi Minyak n-besar pada Tahun x
 st.markdown('Produksi Minyak n-besar Negara per Tahun')
 selectt=st.selectbox('Pilih Tahun: ',selectort)
-selectbn=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=10)
+selectbn=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=5)
 datano2=data[data['tahun']==selectt]
 datano2=datano2.sort_values(["produksi"],ascending=[0])
 datano2=datano2[:selectbn]
@@ -47,7 +47,7 @@ ________________________________________________________________________
 '''
 #No. 3: Produksi Minyak n-besar Kumulatif
 st.markdown('Produksi Minyak n-besar Negara Kumulatif')
-selectbn2=st.select_slider('Pilih Banyak Negara: ',options=selectorb)
+selectbn2=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=5)
 datano3=data.groupby(["name"])["produksi"].sum().reset_index()
 datano3=datano3.sort_values(["produksi"],ascending=[0])
 datano3=datano3[:selectbn2]
