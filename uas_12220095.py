@@ -51,7 +51,7 @@ selectbn2=st.select_slider('Pilih Banyak Negara: ',options=selectorb)
 datano3=data.groupby(["name"])["produksi"].sum().reset_index()
 datano3=datano3.sort_values(["produksi"],ascending=[0])
 datano3=datano3[:selectbn2]
-datano3graph=px.bar(datano3,x="name",y="produksi",title=str(str(selectBanyakNegara2)+" Negara Terbesar Produksi Minyak Kumulatif"))
+datano3graph=px.bar(datano3,x="name",y="produksi",title=str(str(selectbn2)+" Negara Terbesar Produksi Minyak Kumulatif"))
 st.plotly_chart(datano3graph)
 '''
 ________________________________________________________________________
