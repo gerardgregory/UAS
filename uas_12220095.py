@@ -48,7 +48,7 @@ dataB=dataB[:selectBanyakNegara]
 dataB_graph=px.bar(
   dataB,
   x="name",
-  y="produksi",
+  y="produksi", color="orange"
   title=str(str(selectBanyakNegara)+" Negara Terbesar Produksi Minyak pada Tahun "+str(selectTahun))
 )
 st.plotly_chart(dataB_graph)
