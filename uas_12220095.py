@@ -32,8 +32,8 @@ selectNegara = st.selectbox('Pilih Negara',selectorNegara)
 dataA = data[data['name'] == selectNegara]
 dataA_graph=px.line(
   dataA,
-  x="tahun",
-  y="produksi",
+  x="Tahun Produksi",
+  y="Jumlah Produksi",
   title=str("Produksi Minyak Negara "+selectNegara)
 )
 st.plotly_chart(dataA_graph)
@@ -45,7 +45,7 @@ ________________________________________________________________________
 ##Produksi Minyak Mentah Terbesar pada Tahun x
 st.markdown('Produksi Minyak Terbesar pada Tahun: ')
 selectTahun = st.selectbox('Pilih Tahun', selectorTahun)
-selectBanyakNegara = st.selectbox('Pilih Banyak Negara yang Ingin Ditampilkan: ', selectorBesar)
+selectBanyakNegara = st.slider('Pilih Banyak Negara yang Ingin Ditampilkan: ', selectorBesar)
 dataB = data[data['tahun'] == selectTahun]
 dataB=dataB.sort_values(["produksi"],ascending=[0])
 dataB=dataB[:selectBanyakNegara]
