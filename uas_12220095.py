@@ -28,14 +28,14 @@ ________________________________________________________________________
 st.markdown('Produksi Minyak Tiap Negara per Tahun')
 selectn=st.selectbox('Pilih Negara: ',selectorn)
 datano1=data[data['name']==selectn]
-datano1graph=px.line(datan01,x="tahun",y="produksi",title=str("Produksi Minyak Negara "+selectn))
+datano1graph=px.line(datano1,x="tahun",y="produksi",title=str("Produksi Minyak Negara "+selectn))
 st.plotly_chart(datano1graph)
 '''
 ________________________________________________________________________
 '''
 #No.2: Produksi Minyak n-besar pada Tahun x
 st.markdown('Produksi Minyak n-besar Negara per Tahun')
-selectt=st.selectbox('Pilih Tahun: ', selectort)
+selectt=st.selectbox('Pilih Tahun: ',selectort)
 selectbn=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=10)
 datano2=data[data['tahun']==selectt]
 datano2=datano2.sort_values(["produksi"],ascending=[0])
@@ -58,7 +58,7 @@ ________________________________________________________________________
 '''
 #No. 4: Informasi per Tahun
 st.markdown('Informasi Berdasarkan Tahun')
-selectt2 = st.selectbox('Pilih Tahun: ',selectort,key="selectt2")
+selectt2=st.selectbox('Pilih Tahun: ',selectort,key="selectt2")
 '''
 ________________________________________________________________________
 '''
