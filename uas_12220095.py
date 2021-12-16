@@ -32,8 +32,8 @@ selectNegara = st.selectbox('Pilih Negara',selectorNegara)
 dataA = data[data['name'] == selectNegara]
 dataA_graph=px.line(
   dataA,
-  x="Tahun Produksi",
-  y="Jumlah Produksi",
+  x="tahun",
+  y="produksi",
   title=str("Produksi Minyak Negara "+selectNegara)
 )
 st.plotly_chart(dataA_graph)
