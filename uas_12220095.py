@@ -47,7 +47,7 @@ ________________________________________________________________________
 '''
 #No. 3: Produksi Minyak n-besar Kumulatif
 st.markdown('Produksi Minyak n-besar Negara Kumulatif')
-selectbn2=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=5)
+selectbn2=st.select_slider('Pilih Banyak Negara: ',options=selectorb, value=5, key="selectbn2")
 datano3=data.groupby(["name"])["produksi"].sum().reset_index()
 datano3=datano3.sort_values(["produksi"],ascending=[0])
 datano3=datano3[:selectbn2]
