@@ -110,7 +110,7 @@ ________________________________________________________________________
 
 st.markdown('Negara dengan jumlah produksi nol')
 dataF=data[data['tahun']==selectTahun2]
-dataF=dataF.sort_values(["produksi"],ascending=[1])
+dataF=dataF.sort_values(["produksi"],ascending=[0])
 dataF= dataF.loc[dataF["produksi"]==0]
 dataF[["name","kode_negara","region","sub-region"]]
 
