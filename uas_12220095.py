@@ -16,7 +16,7 @@ data=pd.merge(dataNegara,data,on='kode_negara')
 #membuat selektor display
 selectorNegara = data['name'].drop_duplicates()
 selectorTahun = data['tahun'].drop_duplicates()
-selectorBesar = [1,2,3,4,5,10,20,50,100]
+selectorBesar = [3,5,10,20,50,100]
 
 #Judul
 st.title('Data Produksi Minyak Dunia')
