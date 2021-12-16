@@ -121,7 +121,7 @@ ________________________________________________________________________
 st.markdown('Informasi Kumulatif')
 
 '''
-________________________________________________________________________
+
 '''
 
 st.markdown('Negara dengan jumlah produksi terbesar kumulatif')
