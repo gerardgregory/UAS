@@ -1,7 +1,6 @@
-#gerad gregory
-#12220095
-#UAS Pemrograman  Komputer /IF 2112
-#Aplikasi GUI berbasi streamlit
+#Nama: Gerard Gregory
+#NIM: 12220095
+#Deskripsi: UAS Pemrograman Komputer
 
 #import modul yang dibutuhkan
 import streamlit as st
@@ -17,25 +16,25 @@ data=pd.merge(dataNegara,data,on='kode_negara')
 #membuat selektor display
 selectorNegara = data['name'].drop_duplicates()
 selectorTahun = data['tahun'].drop_duplicates()
-selectorBesar = [3,5,10,20,50,100]
+selectorBesar = [1,2,3,4,5,10,20,50,100]
 
 #Judul
-st.title('Dashboard Produksi Minyak Dunia')
-st.markdown('by Gerard Gregory 12220095')
+st.title('Data Produksi Minyak Dunia')
+st.markdown('oleh: Gerard Gregory 12220095')
 
 '''
 ________________________________________________________________________
 '''
 
-##Produksi Minyak Mentah Tiap Negara Per Tahun
-st.markdown('Produksi Minyak Mentah Tiap Negara Per Tahun')
+##Produksi Minyak Tiap Negara Per Tahun
+st.markdown('Produksi Minyak Tiap Negara Per Tahun')
 selectNegara = st.selectbox('Pilih Negara',selectorNegara)
 dataA = data[data['name'] == selectNegara]
-dataA_graph=px.bar(
+dataA_graph=px.line(
   dataA,
-  x="tahun",
-  y="produksi",
-  title=str("Produksi Minyak Mentah "+selectNegara)
+  x="Tahun Produksi",
+  y="Jumlah Produksi",
+  title=str("Produksi Minyak Negara "+selectNegara)
 )
 st.plotly_chart(dataA_graph)
 
