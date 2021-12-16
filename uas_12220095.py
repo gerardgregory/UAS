@@ -11,8 +11,8 @@ import pandas as pd
 #merge data produksi minyak mentah dengan data detail negara
 data = pd.read_csv ("produksi_minyak_mentah.csv")
 dataNegara = pd.read_json ('kode_negara_lengkap.json')
-dataNegara=dataNegara.rename(columns={"alpha-3":"kode_negara"})
-data=pd.merge(dataNegara,data,on='kode_negara')
+dataNegara = dataNegara.rename(columns={"alpha-3":"kode_negara"})
+data = pd.merge(dataNegara,data,on='kode_negara')
 
 #membuat selektor display
 selectorNegara = data['name'].drop_duplicates()
