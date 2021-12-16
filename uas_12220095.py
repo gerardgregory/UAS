@@ -110,7 +110,7 @@ ________________________________________________________________________
 
 st.markdown('Negara dengan jumlah produksi nol')
 dataF=data[data['tahun']==selectTahun2]
-dataF=dataF.sort_values(["produksi"],ascending=[0])
+dataF=dataF.sort_values(["name"],ascending=[1])
 dataF= dataF.loc[dataF["produksi"]==0]
 dataF[["name","kode_negara","region","sub-region"]]
 
@@ -148,6 +148,6 @@ ________________________________________________________________________
 '''
 
 st.markdown('Negara dengan jumlah produksi nol kumulatif')
-dataI=dataG.sort_values(["produksi"],ascending=[1])
+dataI=dataG.sort_values(["name"],ascending=[1])
 dataI=dataI.loc[dataI["produksi"]==0]
 dataI[["name","kode_negara","region","sub-region"]]
