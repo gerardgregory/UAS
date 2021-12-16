@@ -8,15 +8,15 @@ import pandas as pd
 import plotly.express as px
 
 #merge data produksi minyak mentah dengan data detail negara
-data = pd.read_csv ("produksi_minyak_mentah.csv")
-dataNegara = pd.read_json ('kode_negara_lengkap.json')
+data=pd.read_csv ("produksi_minyak_mentah.csv")
+dataNegara=pd.read_json ('kode_negara_lengkap.json')
 dataNegara=dataNegara.rename(columns={"alpha-3":"kode_negara"})
 data=pd.merge(dataNegara,data,on='kode_negara')
 
 #membuat selektor display
-selectorNegara = data['name'].drop_duplicates()
-selectorTahun = data['tahun'].drop_duplicates()
-selectorBesar = [*range(1, 250, 1)]
+selectorNegara=data['name'].drop_duplicates()
+selectorTahun=data['tahun'].drop_duplicates()
+selectorBesar=[*range(1, 250, 1)]
 
 #Judul
 st.title('Data Produksi Minyak Dunia')
@@ -28,8 +28,8 @@ ________________________________________________________________________
 
 ##Produksi Minyak Mentah Tiap Negara Per Tahun
 st.markdown('Produksi Minyak Tiap Negara Per Tahun')
-selectNegara = st.selectbox('Pilih Negara',selectorNegara)
-dataA = data[data['name'] == selectNegara]
+selectNegara=st.selectbox('Pilih Negara: ',selectorNegara)
+dataA=data[data['name'] == selectNegara]
 dataA_graph=px.line(
   dataA,
   x="tahun",
@@ -44,9 +44,9 @@ ________________________________________________________________________
 
 ##Produksi Minyak Mentah Terbesar pada Tahun x
 st.markdown('Produksi Minyak Terbesar pada Tahun: ')
-selectTahun = st.selectbox('Pilih Tahun', selectorTahun)
-selectBanyakNegara = st.select_slider('Pilih Banyak Negara yang Ingin Ditampilkan: ', options=selectorBesar, value=10)
-dataB = data[data['tahun'] == selectTahun]
+selectTahun=st.selectbox('Pilih Tahun: ', selectorTahun)
+selectBanyakNegara=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar, value=10)
+dataB=data[data['tahun']==selectTahun]
 dataB=dataB.sort_values(["produksi"],ascending=[0])
 dataB=dataB[:selectBanyakNegara]
 dataB_graph=px.bar(
@@ -63,8 +63,8 @@ ________________________________________________________________________
 
 ##Produksi Minyak Mentah Kumulatif Terbesar
 st.markdown('Produksi Minyak Kumulatif Terbesar')
-selectBanyakNegara2 = st.selectbox('Pilih Banyak Negara: ', selectorBesar)
-dataC = data.groupby(["name"])["produksi"].sum().reset_index()
+selectBanyakNegara2=st.select_slider('Pilih Banyak Negara: ', options=selectorBesar)
+dataC=data.groupby(["name"])["produksi"].sum().reset_index()
 dataC=dataC.sort_values(["produksi"],ascending=[0])
 dataC=dataC[:selectBanyakNegara2]
 dataC_graph=px.bar(
@@ -82,14 +82,14 @@ ________________________________________________________________________
 ##Informasi 
 
 st.markdown('Informasi Berdasarkan Tahun')
-selectTahun2 = st.selectbox('Pilih Tahun ', selectorTahun)
+selectTahun2=st.selectbox('Pilih Tahun ', selectorTahun)
 
 '''
 ________________________________________________________________________
 '''
 
 st.markdown('Negara dengan jumlah produksi terbesar')
-dataD = data[data['tahun'] == selectTahun2]
+dataD=data[data['tahun']==selectTahun2]
 dataD=dataD.sort_values(["produksi"],ascending=[0])
 dataD=dataD[:1]
 dataD[["name","kode_negara","region","sub-region","produksi"]]
@@ -99,7 +99,7 @@ ________________________________________________________________________
 '''
 
 st.markdown('Negara dengan jumlah produksi terkecil')
-dataE = data[data['tahun'] == selectTahun2]
+dataE=data[data['tahun']==selectTahun2]
 dataE=dataE.sort_values(["produksi"],ascending=[1])
 dataE= dataE.loc[dataE["produksi"]>0]
 dataE=dataE[:1]
@@ -110,7 +110,7 @@ ________________________________________________________________________
 '''
 
 st.markdown('Negara dengan jumlah produksi nol')
-dataF = data[data['tahun'] == selectTahun2]
+dataF=data[data['tahun']==selectTahun2]
 dataF=dataF.sort_values(["produksi"],ascending=[1])
 dataF= dataF.loc[dataF["produksi"]==0]
 dataF[["name","kode_negara","region","sub-region"]]
@@ -126,7 +126,7 @@ ________________________________________________________________________
 '''
 
 st.markdown('Negara dengan jumlah produksi terbesar kumulatif')
-dataG = data.groupby(["name"])["produksi"].sum().reset_index()
+dataG=data.groupby(["name"])["produksi"].sum().reset_index()
 dataG=dataG.sort_values(["produksi"],ascending=[0])
 dataTemp=data
 dataTemp.drop("produksi", axis=1, inplace=True)
